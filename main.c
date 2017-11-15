@@ -1,6 +1,7 @@
 #include <stdio.h>
 
 int main() {
-    printf("Hello, World!\n");
+    char teste = '!';
+    printf("Hello, World%c \n", teste);
     return 0;
 }
