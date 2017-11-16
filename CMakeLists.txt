@@ -3,5 +3,5 @@ project(ProjectLP1_AED1)
 
 set(CMAKE_C_STANDARD 99)
 
-set(SOURCE_FILES main.c)
+set(SOURCE_FILES main.c algorithms/lib_stats.c algorithms/lib_stats.h algorithms/lib_util.c algorithms/lib_util.h algorithms/backtrack.c algorithms/kmp.c algorithms/mergesort.c algorithms/quicksort.c algorithms/quickfind.c algorithms/quickfind.h algorithms/quicksort.h algorithms/quickunion.c algorithms/quickunion.h algorithms/threesum.c algorithms/threesum.h algorithms/threesumfast.c algorithms/threesumfast.h algorithms/stringsearchkmp.c algorithms/stringsearchkmp.h algorithms/stringsorting.c algorithms/stringsorting.h algorithms/library_pqbh.c algorithms/library_pqbh.h algorithms/binarysearchanalysis.c algorithms/binarysearchanalysis.h algorithms/linklist.c algorithms/linklist.h algorithms/queue_chars_array_impl.c algorithms/queue_chars_array_impl.h algorithms/stack_chars_array_impl.c algorithms/stack_chars_array_impl.h algorithms/stack_int_array.c algorithms/stack_int_array.h algorithms/main_adtq.c)
 add_executable(ProjectLP1_AED1 ${SOURCE_FILES})
