@@ -18,7 +18,7 @@ int* init_array(int size) {
   return arr;
 }
 
-int main(void) {
+int main_kmp(void) {
   char* pattern = "abacab";
   char* text = "bbacbabcbabcbabbabcbabcbacbbbacbacbacbacbacbabacab";
 

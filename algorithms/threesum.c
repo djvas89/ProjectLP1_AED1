@@ -71,7 +71,7 @@ int mainClienteThreeSum(int N, char *filename) {
     N = readInts(filename, v, N);
     printf("\n\nLidos %d valores\n", N);
     gettimeuseconds(&time_usec_init); // init time
-    int cnt = countTriples(v, N);
+    int cnt = countTriples(v, N, N);
     gettimeuseconds(&time_usec_end); // init time
     printAll(v, N); // imprime todos os triplos
     //printArray(v,N);

@@ -16,7 +16,7 @@ void clientStack();
 
 void clientINTqueue();
 
-int main() {
+int main_adtq() {
     //clientINTqueue();
     testClient_StackIntArray();
 
@@ -33,7 +33,7 @@ void clientINTqueue() {
     printf("\nMin Value: %d\n", minSizeLinkedListInts(list));
 }
 
-
+/*
 void clientStack() {
     char c;//item
     struct StackCharsArrayImpl stk;
@@ -44,4 +44,4 @@ void clientStack() {
     push(stk, 'B');
     c = pop(stk);
     printf("%c", c);
-}
+}*/

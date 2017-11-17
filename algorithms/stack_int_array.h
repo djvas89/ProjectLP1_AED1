@@ -5,6 +5,10 @@
 #ifndef PROJECTLP1_AED1_STACK_INT_ARRAY_H
 #define PROJECTLP1_AED1_STACK_INT_ARRAY_H
 
+#include <malloc.h>
+#include <stdio.h>
+#include <stdlib.h>
+
 struct StackIntArray {
     int *s;
     int N;

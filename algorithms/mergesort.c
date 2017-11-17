@@ -34,13 +34,14 @@ void clientMerge2()
     printf("\nMerge Sort 2:\n\n");
     merge2(v1, v2, l, m, h);
 }
+/*
 void clientMerge3()
 {
     int v1[] = {15, 24, 25, 18, 31, 10, 4, 5, 20, 40};
     int v2[10];
     printf("\nMerge Sort 3:\n\n");
     mergesort(v2, v1,0,9);
-}
+}*/
 
 void merge1(int v1[], int n1, int v2[], int n2, int v[])
 {
@@ -72,16 +73,6 @@ void merge1(int v1[], int n1, int v2[], int n2, int v[])
 
 }
 
-void printArray(int v[], int N)
-{
-    int i = 0;
-    for (i = 0; i < N; i++)
-    {
-        printf(" %d ", v[i]);
-    }
-    printf("\n");
-}
-
 void merge2(int a[], int aux[], int lo, int mid, int hi)   //v1[lo....mid] v2[mid+1....hi]
 {
     int i = lo, j = mid + 1, k = lo;
@@ -106,7 +97,7 @@ void merge2(int a[], int aux[], int lo, int mid, int hi)   //v1[lo....mid] v2[mi
     }
     printArray(aux, 9);
 }
-
+/*
 void mergesort(int a[], int aux, int lo, int hi)
 {
     if(hi<=lo) return;
@@ -115,7 +106,7 @@ void mergesort(int a[], int aux, int lo, int hi)
 
     mergesort(aux, a, mid+1, hi);
     merge2(a, aux, lo, mid, hi);
-}
+}*/
 
 void insertionSort(int x[], int lo, int hi)
 {

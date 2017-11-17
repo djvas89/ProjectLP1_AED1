@@ -8,8 +8,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "stringsearch_kmp.h"
-#include "../lib_util.h"
+#include "stringsearchkmp.h"
+#include "lib_util.h"
 
 
 /**

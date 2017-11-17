@@ -42,7 +42,7 @@ void test_backtrack_searchn_queens();
 int select_next_variable_nqueens(struct assignment * a);
 int is_current_assignment_consistent_nqueens(struct assignment * a);
 
-int main(int argc, const char * argv[]) {
+int main_backtrack(int argc, const char * argv[]) {
     test_backtrack_searchn_queens();
     return 0;
 }

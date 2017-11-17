@@ -31,7 +31,6 @@ int binarySearchAnalysis(int a[], int n, int key, int *cost_model) {
 
 
 #include <time.h>
-#include "clientBinarySearch.h"
 #include "lib_util.h"
 #include "binarySearchAnalysis.h"
 #include <string.h>
