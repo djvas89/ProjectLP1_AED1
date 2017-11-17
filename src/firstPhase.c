@@ -36,6 +36,21 @@ int firstPhase(int argc, const char *argv[]) {
         }
     } while (1);*/
     return 0;
+    
+    /** main bernardo
+    char** create_dyn_array_strings(char** ppstr, int *psize){
+
+    if(ppstr==NULL){
+       
+        return calloc(10, sizeof(char*));// zera todas as posições a 0
+        
+    }
+    
+    return realloc(ppstr, (psize + 10) * sizeof(char));  // realoca e copia do anterior para o novo e faz o free
+    
+}
+*//
+
 }
 
 /**
@@ -99,6 +114,19 @@ char **create_dynarray_strings(char **pps, int *psize) {
         *(ppnew + i) = NULL;
     }
     return ppnew;
+}
+
+//other implementation of createDynArray
+char** create_dyn_array_strings(char** ppstr, int *psize){
+
+    if(ppstr==NULL){
+       
+        return calloc(10, sizeof(char*));// zera todas as posições a 0
+        
+    }
+    
+    return realloc(ppstr, (psize + 10) * sizeof(char));  // realoca e copia do anterior para o novo e faz o free
+    
 }
 
 /**
