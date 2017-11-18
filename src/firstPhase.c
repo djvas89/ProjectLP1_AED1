@@ -53,6 +53,80 @@ int firstPhase(int argc, const char *argv[]) {
 
 }
 
+
+//one possibility
+/*
+char str[] = "John|Doe|Melbourne|6270|AU";
+char* tempstr = calloc(strlen(str)+1, sizeof(char));
+strcpy(tempstr, str);*/
+
+//another
+
+//http://www.martinbroadhurst.com/dynamic-array-in-c.html
+
+/*
+typedef void(*split_fn)(const char *, size_t, void *);
+ 
+void split(const char *str, char sep, split_fn fun, void *data)
+{
+    unsigned int start = 0, stop;
+    for (stop = 0; str[stop]; stop++) {
+        if (str[stop] == sep) {
+            fun(str + start, stop - start, data);
+            start = stop + 1;
+        }
+    }
+    fun(str + start, stop - start, data);
+}
+
+
+#include <stdio.h>
+ 
+#include <split.h>
+ 
+void print(const char *str, size_t len, void *data)
+{
+    printf("%.*s\n", (int)len, str);
+}
+ 
+int main(void)
+{
+    char str[] = "first,second,third,fourth";
+    split(str, ',', print, NULL);
+    return 0;
+}
+
+For example, here’s how to add the tokens to a dynamic array:
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+ 
+#include <split.h>
+#include <dynarray.h>
+ 
+void add_to_dynarray(const char *str, size_t len, void *data)
+{
+    dynarray *array = data;
+    char *token = calloc(len + 1, 1);
+    memcpy(token, str, len);
+    dynarray_add_tail(array, token);
+}
+ 
+int main(void)
+{
+    char str[] = "first,second,third,fourth";
+    dynarray *array = dynarray_create(0);
+    split(str, ',', add_to_dynarray, array);
+    dynarray_for_each(array, (dynarray_forfn)puts);
+    dynarray_for_each(array, free);
+    dynarray_delete(array);
+    return 0;
+}
+
+
+*/
+
+
 /**
  * @brief Clone_argv makes a dynamic copy of argv
  * @param argc - receives the argc integer from main
