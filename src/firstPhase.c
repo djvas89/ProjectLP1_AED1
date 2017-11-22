@@ -13,9 +13,9 @@
  */
 int firstPhase(int argc, const char *argv[]) {
     char **ppnomes = NULL; //put the ppnomes at NULL
-    int index = 0, size = 0;
+    int index = 0, size = 1;
     ppnomes = create_dynarray_strings(ppnomes, &size);
-    char *input = (char *) malloc(sizeof(char) * M200);
+    char input[M200] = "";
 
     //check if allocation is success or fail
     if (input == NULL) {
@@ -23,10 +23,10 @@ int firstPhase(int argc, const char *argv[]) {
         exit(1);
     }
 
-    printf("Input a string, (Finish with '.'): ");
+    printf("Input a string, (Finish with '.'):\n");
     do {
-        realloc(input, (sizeof(char)));
         fgets(input, M200, stdin);
+        insert_string_dynarray_strings(ppnomes, &size, input, &index);
         if (strcmp(input, ".\n") == 0)
             break;
         if (index == (size - 1)) {
@@ -40,6 +40,8 @@ int firstPhase(int argc, const char *argv[]) {
 
 //http://www.martinbroadhurst.com/trim-a-string-in-c.html
 //http://www.martinbroadhurst.com/dynamic-array-in-c.html
+
+
 
 /**
  * @brief Clone_argv makes a dynamic copy of argv
@@ -64,7 +66,7 @@ char **clone_argv(int argc, const char *argv[]) {
  */
 void print_dynarray_strings(int size, char **pps) {
     for (int i = 0; i < size; ++i) {
-        printf("String on Array nº [ %d ] = %s \n", i, *(pps + i));
+        printf("String on Array num [ %d ] = %s \n", i, *(pps + i));
     }
 }
 
@@ -108,15 +110,12 @@ char **create_dynarray_strings(char **pps, int *psize) {
  * @param pps - dynamic array where insertions will occur
  * @param psize - size of the array
  * @param s - array of char to be used in create_copy_dyn_string
+ * @param *i - pointer to i which indicates the index
  * @return pps - the new dyn array fully inserted
  */
-char **insert_string_dynarray_strings(char **pps, int *psize, char s[]) {
-    for (int i = 0; i < *psize; ++i) {
-        if (*(pps + i) == NULL) {
-            *(pps + i) = create_copy_dyn_string(s);
-        }
-    }
-    return pps;
+void insert_string_dynarray_strings(char **pps, int *psize, char s[], int *i) {
+    if (*i >= *psize) create_dynarray_strings(pps, psize);
+    *(pps + ((*i)++)) = create_copy_dyn_string(s);
 }
 
 /**
@@ -124,7 +123,7 @@ char **insert_string_dynarray_strings(char **pps, int *psize, char s[]) {
  * @param str - receives a static array of char
  * @return t - the new dynamic array of char
  */
-char *create_copy_dyn_string(char *str[]) {
+char *create_copy_dyn_string(char *str) {
     char *t;
     t = (char *) malloc(sizeof(char) * strlen(str));
     strcpy(t, str);
