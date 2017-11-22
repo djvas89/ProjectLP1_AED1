@@ -16,7 +16,6 @@ struct LinkedListInts_Node *createListInts_Node(int item_value);
 
 void printLinkedListInts(struct LinkedListInts_Node *lista);
 
-
 /* cria uma lista ligada com base num vector de n inteiros */
 struct LinkedListInts_Node *createListInts(int v[], int n);
 
@@ -27,7 +26,6 @@ int getElement(struct LinkedListInts_Node *lista, int idx);
 void setElement(struct LinkedListInts_Node *lista, int idx, int newValue);
 
 struct LinkedListInts_Node *removeElement(struct LinkedListInts_Node *lista, int idx);
-
 
 int maxSizeLinkedListInts(struct LinkedListInts_Node *lista);
 

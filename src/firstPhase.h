@@ -25,6 +25,8 @@ char **create_dynarray_strings(char **pps, int *psize);
 
 char **insert_string_dynarray_strings(char **pps, int *psize, char s[]);
 
-char *create_copy_dyn_string(char str[]);
+char *create_copy_dyn_string(char *str[]);
+
+char *strsplitter(char *str[], const char *delim);
 
 #endif //PROJECTLP1_AED1_FIRSTPHASE_H

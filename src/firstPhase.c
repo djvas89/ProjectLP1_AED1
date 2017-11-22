@@ -13,119 +13,33 @@
  */
 int firstPhase(int argc, const char *argv[]) {
     char **ppnomes = NULL; //put the ppnomes at NULL
-    ppnomes = clone_argv(argc, argv);
-    print_dynarray_strings(argc, ppnomes);
-    free_dynarray_strings(argc, ppnomes);
-
-    /*char str[M200] = "";
-    char **ppnomes = NULL;
-    int size = 0;
-    int index = 0;
+    int index = 0, size = 0;
     ppnomes = create_dynarray_strings(ppnomes, &size);
-    printf("Inserir Nomes (Terminar c/ \".\")\n");
+    char *input = (char *) malloc(sizeof(char) * M200);
+
+    //check if allocation is success or fail
+    if (input == NULL) {
+        printf("Could not allocate memory");
+        exit(1);
+    }
+
+    printf("Input a string, (Finish with '.'): ");
     do {
-        fgets(str,
-              M200, stdin);
-        if (
-                strcmp(str,
-                       ".\n") == 0)
+        realloc(input, (sizeof(char)));
+        fgets(input, M200, stdin);
+        if (strcmp(input, ".\n") == 0)
             break;
         if (index == (size - 1)) {
-            create_dynarray_strings(ppnomes,
-                                    &size);
+            create_dynarray_strings(ppnomes, &size);
+            index++;
         }
-    } while (1);*/
+    } while (1);
+    print_dynarray_strings(index, ppnomes);
     return 0;
-    
-    /** main bernardo
-    char** create_dyn_array_strings(char** ppstr, int *psize){
-
-    if(ppstr==NULL){
-       
-        return calloc(10, sizeof(char*));// zera todas as posições a 0
-        
-    }
-    
-    return realloc(ppstr, (psize + 10) * sizeof(char));  // realoca e copia do anterior para o novo e faz o free
-    
-}
-*//
-
 }
 
-
-//one possibility
-/*
-char str[] = "John|Doe|Melbourne|6270|AU";
-char* tempstr = calloc(strlen(str)+1, sizeof(char));
-strcpy(tempstr, str);*/
-
-//another
-
+//http://www.martinbroadhurst.com/trim-a-string-in-c.html
 //http://www.martinbroadhurst.com/dynamic-array-in-c.html
-
-/*
-typedef void(*split_fn)(const char *, size_t, void *);
- 
-void split(const char *str, char sep, split_fn fun, void *data)
-{
-    unsigned int start = 0, i;
-    for (i = 0; str[i]; i++) {
-        if (str[i] == sep[i]) { //if finds any delimiter
-            fun(str + start, i - start, data);
-            start = i + 1;
-        }
-    }
-    fun(str + start, stop - start, data);
-}
-
-
-#include <stdio.h>
- 
-#include <split.h>
- 
-void print(const char *str, size_t len, void *data)
-{
-    printf("%.*s\n", (int)len, str);
-}
- 
-int main(void)
-{
-    char str[] = "first,second,third,fourth";
-    split(str, ',', print, NULL);
-    return 0;
-}
-
-For example, here’s how to add the tokens to a dynamic array:
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
- 
-#include <split.h>
-#include <dynarray.h>
- 
-void add_to_dynarray(const char *str, size_t len, void *data)
-{
-    dynarray *array = data;
-    char *token = calloc(len + 1, 1);
-    memcpy(token, str, len);
-    dynarray_add_tail(array, token);
-}
- 
-int main(void)
-{
-    char str[] = "first,second,third,fourth";
-    dynarray *array = dynarray_create(0);
-    split(str, ',', add_to_dynarray, array);
-    dynarray_for_each(array, (dynarray_forfn)puts);
-    dynarray_for_each(array, free);
-    dynarray_delete(array);
-    return 0;
-}
-
-
-*/
-
 
 /**
  * @brief Clone_argv makes a dynamic copy of argv
@@ -149,9 +63,8 @@ char **clone_argv(int argc, const char *argv[]) {
  * @param pps - dynamic matrix of char
  */
 void print_dynarray_strings(int size, char **pps) {
-
     for (int i = 0; i < size; ++i) {
-        printf("String %d = %s \n", i, *(pps + i));
+        printf("String on Array nº [ %d ] = %s \n", i, *(pps + i));
     }
 }
 
@@ -179,7 +92,7 @@ char **create_dynarray_strings(char **pps, int *psize) {
     char **ppnew = NULL;
     if (pps == NULL) {
         *psize = M10;
-        ppnew = (char **) calloc(*psize, sizeof(char **));
+        ppnew = (char **) calloc(*psize, sizeof(char *));
         return ppnew;
     }
     *psize += M10;
@@ -188,19 +101,6 @@ char **create_dynarray_strings(char **pps, int *psize) {
         *(ppnew + i) = NULL;
     }
     return ppnew;
-}
-
-//other implementation of createDynArray
-char** create_dyn_array_strings(char** ppstr, int *psize){
-
-    if(ppstr==NULL){
-       
-        return calloc(10, sizeof(char*));// zera todas as posições a 0
-        
-    }
-    
-    return realloc(ppstr, (psize + 10) * sizeof(char));  // realoca e copia do anterior para o novo e faz o free
-    
 }
 
 /**
@@ -224,7 +124,7 @@ char **insert_string_dynarray_strings(char **pps, int *psize, char s[]) {
  * @param str - receives a static array of char
  * @return t - the new dynamic array of char
  */
-char *create_copy_dyn_string(char str[]) {
+char *create_copy_dyn_string(char *str[]) {
     char *t;
     t = (char *) malloc(sizeof(char) * strlen(str));
     strcpy(t, str);
