@@ -12,30 +12,91 @@
  * @return 0 if there is no error
  */
 int firstPhase(int argc, const char *argv[]) {
-    char **ppnomes = NULL; //put the ppnomes at NULL
-    int index = 0, size = 1;
+    char **sentencesM = NULL; //put the sentences matrix at NULL
+    char **wordsM = NULL; //put the words matrix at NULL
+    char **bagofwordsM = NULL; //put the bagofwords matrix at NULL
+    char **map = NULL; //put the sentences matrix at NULL
+    int size = 0;
     ppnomes = create_dynarray_strings(ppnomes, &size);
-    char input[M200] = "";
+    int size = 0, index = 0;
 
-    //check if allocation is success or fail
-    if (input == NULL) {
-        printf("Could not allocate memory");
-        exit(1);
+
+    showmenuPh1();
+    selectMenu();
+
+
+    return 0;
+}
+
+/**
+ * @brief It displays a Menu
+ */
+void showmenuPh1() {
+
+    printf("=================================\n");
+    printf(" Menu LP1 & AED1\n");
+    printf("=================================\n");
+    printf("1.Insert to Matrix\n");
+
+    printf("0.Exit\n");
+
+}
+
+void selectMenu() {
+    int val, pos, ch;
+    char yes = 'y';
+    while (yes == 'y') {
+        printf("Enter your choice:");
+        scanf("%d", &ch);
+        switch (ch) {
+            case 1:
+                insertIntoMatrix();
+                break;
+            case 2:
+
+                break;
+            case 3:
+
+                break;
+            case 4:
+
+                break;
+            case 0:
+                exit(0);
+
+            default:
+                "Invalid choice";
+
+        }
+        printf("Continue? Type: y/n:\n");
+        scanf("%s", &yes);
     }
+}
 
+
+/**
+ * @brief Creates a sentences Matrix
+ */
+void insertIntoMatrix() {
+    char **ppnomes = NULL; //put the ppnomes at NULL
+    int size = 0;
+    ppnomes = create_dynarray_strings(ppnomes, &size);
+    int size = 0, index = 0;
+
+    char input[M200] = "";
     printf("Input a string, (Finish with '.'):\n");
     do {
         fgets(input, M200, stdin);
-        insert_string_dynarray_strings(ppnomes, &size, input, &index);
         if (strcmp(input, ".\n") == 0)
             break;
+        insert_string_dynarray_strings(ppnomes, &size, input, &index);
+        index++;
         if (index == (size - 1)) {
             create_dynarray_strings(ppnomes, &size);
             index++;
         }
     } while (1);
     print_dynarray_strings(index, ppnomes);
-    return 0;
 }
 
 //http://www.martinbroadhurst.com/trim-a-string-in-c.html
@@ -129,9 +190,5 @@ char *create_copy_dyn_string(char *str) {
     strcpy(t, str);
     return t;
 }
-
-//char ** order_dynarray_strings(char *pps, int size)
-
-//strcmp(*(pps+i),*(pps+j))<0 ou >0
 
 

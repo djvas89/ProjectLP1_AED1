@@ -27,6 +27,10 @@ void insert_string_dynarray_strings(char **pps, int *psize, char s[], int *i);
 
 char *create_copy_dyn_string(char *str);
 
-char *strsplitter(char *str[], const char *delim);
+
+
+void showmenuPh1();
+
+void selectMenu();
 
 #endif //PROJECTLP1_AED1_FIRSTPHASE_H
